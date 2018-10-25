@@ -10,7 +10,9 @@ import { Quaternion } from './Quaternion.js';
  * @author egraether / http://egraether.com/
  * @author WestLangley / http://github.com/WestLangley
  */
-
+/**
+* 3d向量
+*/
 function Vector3( x, y, z ) {
 
 	this.x = x || 0;
