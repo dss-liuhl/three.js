@@ -69,6 +69,9 @@ Object.assign( Vector3.prototype, {
 
 	},
 
+	/**
+	按索引方式1-x，2-y，3-z访问
+	*/
 	setComponent: function ( index, value ) {
 
 		switch ( index ) {
@@ -129,7 +132,9 @@ Object.assign( Vector3.prototype, {
 		return this;
 
 	},
-
+	
+	研究了一维线性标量守恒律初边值问题的弱解，分析了有限元方法的收敛性
+	
 	addScalar: function ( s ) {
 
 		this.x += s;
