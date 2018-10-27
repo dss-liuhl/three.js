@@ -100,12 +100,18 @@ Object.assign( Vector3.prototype, {
 
 	},
 
+	/**
+	克隆对象
+	*/
 	clone: function () {
 
 		return new this.constructor( this.x, this.y, this.z );
 
 	},
 
+	/**
+	对象拷贝
+	*/
 	copy: function ( v ) {
 
 		this.x = v.x;
@@ -132,8 +138,6 @@ Object.assign( Vector3.prototype, {
 		return this;
 
 	},
-	
-	研究了一维线性标量守恒律初边值问题的弱解，分析了有限元方法的收敛性
 	
 	addScalar: function ( s ) {
 
@@ -371,6 +375,9 @@ Object.assign( Vector3.prototype, {
 
 	},
 
+	/**
+	标量除法
+	*/
 	divideScalar: function ( scalar ) {
 
 		return this.multiplyScalar( 1 / scalar );
@@ -472,7 +479,9 @@ Object.assign( Vector3.prototype, {
 		return this;
 
 	},
-
+	/**
+	负向量
+	*/
 	negate: function () {
 
 		this.x = - this.x;
@@ -482,7 +491,9 @@ Object.assign( Vector3.prototype, {
 		return this;
 
 	},
-
+	/**
+	向量点乘
+	*/
 	dot: function ( v ) {
 
 		return this.x * v.x + this.y * v.y + this.z * v.z;
@@ -496,7 +507,9 @@ Object.assign( Vector3.prototype, {
 		return this.x * this.x + this.y * this.y + this.z * this.z;
 
 	},
-
+	/**
+	向量的模
+	*/
 	length: function () {
 
 		return Math.sqrt( this.x * this.x + this.y * this.y + this.z * this.z );
@@ -508,7 +521,9 @@ Object.assign( Vector3.prototype, {
 		return Math.abs( this.x ) + Math.abs( this.y ) + Math.abs( this.z );
 
 	},
-
+	/**
+	标准化向量
+	*/
 	normalize: function () {
 
 		return this.divideScalar( this.length() || 1 );
