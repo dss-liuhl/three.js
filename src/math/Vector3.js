@@ -12,6 +12,7 @@ import { Quaternion } from './Quaternion.js';
  */
 /**
 * 3d向量
+* 构造函数，如果没有分量则默认为0
 */
 function Vector3( x, y, z ) {
 
@@ -21,7 +22,7 @@ function Vector3( x, y, z ) {
 
 }
 
-Object.assign( Vector3.prototype, {
+Object.assign( Vector3.prototype, {  //Object.assign() 是ECMAScript 6的新增语法，用于对象合并，将1个或多个源合并到目标对象
 
 	isVector3: true,
 
@@ -35,6 +36,9 @@ Object.assign( Vector3.prototype, {
 
 	},
 
+	/**
+	* 各分量统一设置一个标量
+	*/
 	setScalar: function ( scalar ) {
 
 		this.x = scalar;
@@ -122,6 +126,9 @@ Object.assign( Vector3.prototype, {
 
 	},
 
+	/**
+	* 向量加法，只使用v参数，结果值存在本对象中，如果有w参数 调用addVectors
+	*/
 	add: function ( v, w ) {
 
 		if ( w !== undefined ) {
@@ -138,7 +145,9 @@ Object.assign( Vector3.prototype, {
 		return this;
 
 	},
-	
+	/**
+	* 向量+标量
+	*/
 	addScalar: function ( s ) {
 
 		this.x += s;
@@ -149,6 +158,9 @@ Object.assign( Vector3.prototype, {
 
 	},
 
+	/**
+	* 向量加法，使用两个参数，结果值存在本对象中
+	*/
 	addVectors: function ( a, b ) {
 
 		this.x = a.x + b.x;
@@ -159,6 +171,9 @@ Object.assign( Vector3.prototype, {
 
 	},
 
+	/**
+	* 加向量乘标量
+	*/
 	addScaledVector: function ( v, s ) {
 
 		this.x += v.x * s;
@@ -168,7 +183,9 @@ Object.assign( Vector3.prototype, {
 		return this;
 
 	},
-
+	/**
+	* 向量减法，只使用v参数，结果值存在本对象中，如果有w参数 调用subVectors
+	*/
 	sub: function ( v, w ) {
 
 		if ( w !== undefined ) {
@@ -185,7 +202,9 @@ Object.assign( Vector3.prototype, {
 		return this;
 
 	},
-
+	/**
+	* 减标量
+	*/
 	subScalar: function ( s ) {
 
 		this.x -= s;
@@ -195,7 +214,9 @@ Object.assign( Vector3.prototype, {
 		return this;
 
 	},
-
+	/**
+	* 向量减法，使用两个参数，结果值存在独立的本向象中
+	*/
 	subVectors: function ( a, b ) {
 
 		this.x = a.x - b.x;
@@ -206,6 +227,9 @@ Object.assign( Vector3.prototype, {
 
 	},
 
+	/**
+	* 向量乘法，各分量相乘得到一个新向量，既不是点乘，也不是叉乘
+	*/
 	multiply: function ( v, w ) {
 
 		if ( w !== undefined ) {
@@ -222,7 +246,9 @@ Object.assign( Vector3.prototype, {
 		return this;
 
 	},
-
+	/**
+	* 向量与标量的乘法，结果得到一个长度不同，方向相同或相反的向量
+	*/
 	multiplyScalar: function ( scalar ) {
 
 		this.x *= scalar;
@@ -232,7 +258,9 @@ Object.assign( Vector3.prototype, {
 		return this;
 
 	},
-
+	/**
+	* 向量乘法，各分量相乘得到一个新向量，既不是点乘，也不是叉乘，两个参数，结果存在独立的本向量中
+	*/
 	multiplyVectors: function ( a, b ) {
 
 		this.x = a.x * b.x;
@@ -243,6 +271,9 @@ Object.assign( Vector3.prototype, {
 
 	},
 
+	/**
+	* 欧拉角
+	*/
 	applyEuler: function () {
 
 		var quaternion = new Quaternion();
@@ -260,7 +291,9 @@ Object.assign( Vector3.prototype, {
 		};
 
 	}(),
-
+	/**
+	* 欧？？？
+	*/
 	applyAxisAngle: function () {
 
 		var quaternion = new Quaternion();
@@ -273,6 +306,9 @@ Object.assign( Vector3.prototype, {
 
 	}(),
 
+	/**
+	* 3d矩阵
+	*/
 	applyMatrix3: function ( m ) {
 
 		var x = this.x, y = this.y, z = this.z;
@@ -285,7 +321,9 @@ Object.assign( Vector3.prototype, {
 		return this;
 
 	},
-
+        /**
+	* 4d矩阵
+	*/
 	applyMatrix4: function ( m ) {
 
 		var x = this.x, y = this.y, z = this.z;
@@ -300,7 +338,9 @@ Object.assign( Vector3.prototype, {
 		return this;
 
 	},
-
+      /**
+	* 4元数
+	*/
 	applyQuaternion: function ( q ) {
 
 		var x = this.x, y = this.y, z = this.z;
@@ -552,6 +592,9 @@ Object.assign( Vector3.prototype, {
 
 	},
 
+	/**
+	* 向量叉乘
+	*/
 	cross: function ( v, w ) {
 
 		if ( w !== undefined ) {
@@ -564,7 +607,9 @@ Object.assign( Vector3.prototype, {
 		return this.crossVectors( this, v );
 
 	},
-
+	/**
+	* 向量叉乘，连个参数，结果放入独立的本向量中
+	*/
 	crossVectors: function ( a, b ) {
 
 		var ax = a.x, ay = a.y, az = a.z;
