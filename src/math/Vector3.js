@@ -74,7 +74,7 @@ Object.assign( Vector3.prototype, {  //Object.assign() 是ECMAScript 6的新增�
 	},
 
 	/**
-	按索引方式1-x，2-y，3-z访问
+	按索引方式1-x，2-y，3-z访问分量
 	*/
 	setComponent: function ( index, value ) {
 
